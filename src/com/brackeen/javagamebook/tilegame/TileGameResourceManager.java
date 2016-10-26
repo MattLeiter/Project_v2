@@ -29,6 +29,8 @@ public class TileGameResourceManager extends ResourceManager {
     private Sprite goalSprite;
     private Sprite grubSprite;
     private Sprite flySprite;
+    private Sprite bulletSprite;
+    private Sprite enemyBulletSprite;
 
     /**
         Creates a new ResourceManager with the specified
@@ -179,6 +181,14 @@ public class TileGameResourceManager extends ResourceManager {
         }
     }
 
+    public Sprite getBullet(){
+        return bulletSprite;
+    }
+
+    public Sprite getEnemyBullet(){
+        return enemyBulletSprite;
+    }
+
 
     // -----------------------------------------------------------
     // code for loading sprites and images
@@ -312,6 +322,17 @@ public class TileGameResourceManager extends ResourceManager {
         anim.addFrame(loadImage("music3.png"), 150);
         anim.addFrame(loadImage("music2.png"), 150);
         musicSprite = new PowerUp.Music(anim);
+
+        // create bullet
+        anim = new Animation();
+        Image bullImage = loadImage("heart1.png");
+        anim.addFrame(bullImage, 150);
+        bulletSprite = new Bullet(anim, anim, anim, anim);
+
+        // create bullet
+        anim = new Animation();
+        anim.addFrame(bullImage, 150);
+        enemyBulletSprite = new EnemyBullet(anim, anim, anim, anim);
     }
 
 }

@@ -156,7 +156,7 @@ public class TileMapRenderer {
                 x >= 0 && x < screenWidth)
             {
                 ((Creature)sprite).wakeUp();
-                g.drawString("Health: " + MainGameState.HEALTH , screenWidth/2 , screenHeight/2);
+                g.drawString("Health: " + MainGameState.HEALTH , screenWidth/8 , screenHeight/2);
             }
         }
 

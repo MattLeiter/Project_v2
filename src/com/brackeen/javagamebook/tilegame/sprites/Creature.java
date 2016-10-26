@@ -25,6 +25,9 @@ public abstract class Creature extends Sprite {
     private Animation deadRight;
     private int state;
     private long stateTime;
+    public boolean isEnemyShooting = false;
+
+    public String direction = "right"; // Initial player direction right
     /**
         Creates a new Creature with the specified Animations.
     */
@@ -145,9 +148,11 @@ public abstract class Creature extends Sprite {
         Animation newAnim = anim;
         if (getVelocityX() < 0) {
             newAnim = left;
+            direction = "left";
         }
         else if (getVelocityX() > 0) {
             newAnim = right;
+            direction = "right";
         }
         if (state == STATE_DYING && newAnim == left) {
             newAnim = deadLeft;

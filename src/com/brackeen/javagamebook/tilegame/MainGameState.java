@@ -3,8 +3,11 @@ package com.brackeen.javagamebook.tilegame;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
+import javax.sound.midi.SysexMessage;
 
 
 import com.brackeen.javagamebook.graphics.*;
@@ -41,6 +44,9 @@ public class MainGameState implements GameState {
     private GameAction jump;
     private GameAction exit;
 
+    // new stuff
+    private GameAction shoot;
+
     public MainGameState(SoundManager soundManager,
         MidiPlayer midiPlayer, int width, int height)
     {
@@ -50,6 +56,7 @@ public class MainGameState implements GameState {
         this.height = height;
         moveLeft = new GameAction("moveLeft");
         moveRight = new GameAction("moveRight");
+        shoot = new GameAction("shoot"); // ****** new
         jump = new GameAction("jump",
             GameAction.DETECT_INITAL_PRESS_ONLY);
         exit = new GameAction("exit",
@@ -92,6 +99,7 @@ public class MainGameState implements GameState {
         inputManager.mapToKey(jump, KeyEvent.VK_SPACE);
         inputManager.mapToKey(jump, KeyEvent.VK_UP);
         inputManager.mapToKey(exit, KeyEvent.VK_ESCAPE);
+        inputManager.mapToKey(shoot, KeyEvent.VK_S);
 
         soundManager.setPaused(false);
         midiPlayer.setPaused(false);
@@ -120,6 +128,11 @@ public class MainGameState implements GameState {
                 !sequencer.getTrackMute(DRUM_TRACK));
         }
     }
+    public boolean isShooting = false;
+    private int shootingCount = 0;
+    private boolean coolDown = false;
+    private long coolDownStart = System.currentTimeMillis();
+    private long bulletStart = System.currentTimeMillis();
 
     private void checkInput(long elapsedTime) {
 
@@ -139,6 +152,35 @@ public class MainGameState implements GameState {
             }
             if (jump.isPressed()) {
                 player.jump(false);
+            }
+
+            // add in shoot
+            if(shoot.isPressed()) {
+                if (System.currentTimeMillis() - bulletStart >= 200 || coolDown) {
+                    if (coolDown) {
+                        if (System.currentTimeMillis() - coolDownStart >= 10000) {
+                            coolDown = false;
+                            isShooting = false;
+                        }
+                    }
+                    if (isShooting && !coolDown) { // Automatic Mode
+                        if (shootingCount >= 10) {
+                            shootingCount = 0;
+                            isShooting = false;
+                            coolDown = true;
+                            coolDownStart = System.currentTimeMillis();
+                        } else {
+                            shootingCount++;
+                            bulletStart = System.currentTimeMillis();
+                            isShooting = true;
+                        }
+                    } else if (!isShooting && !coolDown) { // Normal Mode
+                        isShooting = true;
+                    }
+                } else {
+                    isShooting = false;
+                    shootingCount = 0;
+                }
             }
             player.setVelocityX(velocityX);
         }
@@ -245,7 +287,8 @@ public class MainGameState implements GameState {
     */
     public void update(long elapsedTime) {
         Creature player = (Creature)map.getPlayer();
-
+        Sprite playerBullet = (Sprite) resourceManager.getBullet().clone();
+        Sprite enemyBullet = (Sprite) resourceManager.getBullet().clone();
 
         // player is dead! start map over
         if (player.getState() == Creature.STATE_DEAD) {
@@ -261,7 +304,24 @@ public class MainGameState implements GameState {
         updateCreature(player, elapsedTime);
         player.update(elapsedTime);
 
+        // update bullets
+        if(isShooting)
+        {
+            playerBullet.setY(player.getY());
+
+            if(player.direction == "right"){
+                playerBullet.setVelocityX(1.0f);
+                playerBullet.setX(player.getX());
+            }else{
+                playerBullet.setVelocityX(-1.0f);
+                playerBullet.setX(player.getX());
+            }
+            playerBullet.setVelocityY(0);
+            map.addSprite(playerBullet);
+            //soundManager.play(shootingSound);
+        }
         // update other sprites
+        LinkedList<Sprite> enemyBullets = new LinkedList<Sprite>();
         Iterator i = map.getSprites();
         while (i.hasNext()) {
             Sprite sprite = (Sprite)i.next();
@@ -274,6 +334,7 @@ public class MainGameState implements GameState {
                     updateCreature(creature, elapsedTime);
                 }
             }
+
             // normal update
             sprite.update(elapsedTime);
         }
@@ -356,6 +417,15 @@ public class MainGameState implements GameState {
 
             if(HEALTH > 40) HEALTH = 40;
         }
+
+        // check for bullet collision with creatures
+        Sprite collisionSprite = getSpriteCollision(creature);
+        if (collisionSprite instanceof Bullet) {
+            if(creature.isAlive() && !(creature instanceof Player) & !(creature instanceof Bullet))
+            {
+                creature.setState(Creature.STATE_DYING);
+            }
+        }
     }
 
 
@@ -377,22 +447,10 @@ public class MainGameState implements GameState {
             acquirePowerUp((PowerUp)collisionSprite);
         }
         else if (collisionSprite instanceof Creature) {
-            /*
-            Creature badguy = (Creature)collisionSprite;
-            if (canKill) {
-                // kill the badguy and make player bounce
-                soundManager.play(boopSound);
-                badguy.setState(Creature.STATE_DYING);
-                player.setY(badguy.getY() - player.getHeight());
-                player.jump(true);
+            if(collisionSprite instanceof Bullet)
+            {
+                return;
             }
-            else {
-                // player loses health
-                HEALTH--;
-                soundManager.play(prizeSound);
-                // player dies!
-                //player.setState(Creature.STATE_DYING);
-            }*/
             HEALTH = 0;
             player.setState(Creature.STATE_DYING);
         }
