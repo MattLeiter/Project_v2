@@ -134,6 +134,9 @@ public class MainGameState implements GameState {
     private long coolDownStart = System.currentTimeMillis();
     private long bulletStart = System.currentTimeMillis();
 
+    private long previousShot = 0;
+    private boolean wasShooting = false;
+    private boolean paused = false;
     private void checkInput(long elapsedTime) {
 
         if (exit.isPressed()) {
@@ -155,32 +158,69 @@ public class MainGameState implements GameState {
             }
 
             // add in shoot
+//            if(shoot.isPressed()) {
+//                if (System.currentTimeMillis() - bulletStart >= 200 || coolDown) {
+//                    if (coolDown) {
+//                        if (System.currentTimeMillis() - coolDownStart >= 10000) {
+//                            coolDown = false;
+//                            isShooting = false;
+//                        }
+//                    }
+//                    if (isShooting && !coolDown) { // Automatic Mode
+//                        if (shootingCount >= 10) {
+//                            shootingCount = 0;
+//                            isShooting = false;
+//                            coolDown = true;
+//                            coolDownStart = System.currentTimeMillis();
+//                        } else {
+//                            shootingCount++;
+//                            bulletStart = System.currentTimeMillis();
+//                            isShooting = true;
+//                        }
+//                    } else if (!isShooting && !coolDown) { // Normal Mode
+//                        isShooting = true;
+//                    }
+//                } else {
+//                    isShooting = false;
+//                    shootingCount = 0;
+//                }
+//            }
+            // add in shoot
             if(shoot.isPressed()) {
-                if (System.currentTimeMillis() - bulletStart >= 200 || coolDown) {
-                    if (coolDown) {
-                        if (System.currentTimeMillis() - coolDownStart >= 10000) {
-                            coolDown = false;
-                            isShooting = false;
-                        }
-                    }
-                    if (isShooting && !coolDown) { // Automatic Mode
-                        if (shootingCount >= 10) {
-                            shootingCount = 0;
-                            isShooting = false;
-                            coolDown = true;
-                            coolDownStart = System.currentTimeMillis();
-                        } else {
-                            shootingCount++;
-                            bulletStart = System.currentTimeMillis();
-                            isShooting = true;
-                        }
-                    } else if (!isShooting && !coolDown) { // Normal Mode
-                        isShooting = true;
-                    }
-                } else {
+                // delay
+                if (System.currentTimeMillis() - previousShot <= 200) {
+                    wasShooting = isShooting;
                     isShooting = false;
-                    shootingCount = 0;
                 }
+                // not delaying
+                else {
+                    // if cooldown
+                    if (coolDown) {
+                        if (System.currentTimeMillis() - coolDownStart >= 1000) {
+                            coolDown = false;
+                            shootingCount = 0;
+                        }
+                    }
+                    // not cooldown
+                    else {
+                            // shooting count at 10
+                            if (shootingCount >= 10) {
+                                coolDown = true;
+                                coolDownStart = System.currentTimeMillis();
+                                isShooting = false;
+                            }
+                            //otherwise not at 10
+                            else {
+                                shootingCount += 1;
+                                isShooting = true;
+                                previousShot = System.currentTimeMillis();
+                            }
+                        }
+                    }
+                }
+            else{
+                isShooting = false;
+                shootingCount = 0;
             }
             player.setVelocityX(velocityX);
         }

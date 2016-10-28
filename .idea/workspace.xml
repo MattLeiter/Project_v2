@@ -25,12 +25,10 @@
       <file leaf-file-name="GameManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/GameManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1324">
-              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
+            <state relative-caret-position="1222">
+              <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2384#2675#0" expanded="true" />
-                <element signature="e#2674#2675#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -39,8 +37,8 @@
       <file leaf-file-name="GameStateManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/state/GameStateManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1119">
-              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+            <state relative-caret-position="2132">
+              <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -49,7 +47,7 @@
       <file leaf-file-name="TileMapRenderer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/TileMapRenderer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3209">
+            <state relative-caret-position="3224">
               <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
               <folding />
             </state>
@@ -59,11 +57,9 @@
       <file leaf-file-name="MainGameState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/MainGameState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4949">
-              <caret line="336" column="0" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
-              <folding>
-                <element signature="e#10167#10175#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="1267">
+              <caret line="222" column="34" selection-start-line="222" selection-start-column="34" selection-end-line="222" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -71,9 +67,59 @@
       <file leaf-file-name="LinkedList.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/LinkedList.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
+            <state relative-caret-position="23556">
               <caret line="965" column="0" selection-start-line="965" selection-start-column="0" selection-end-line="965" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="e#0#39347#0" expanded="false" />
+                <element signature="e#8008#8009#0" expanded="false" />
+                <element signature="e#8036#8037#0" expanded="false" />
+                <element signature="e#8248#8249#0" expanded="false" />
+                <element signature="e#8275#8276#0" expanded="false" />
+                <element signature="e#8748#8749#0" expanded="false" />
+                <element signature="e#8787#8788#0" expanded="false" />
+                <element signature="e#8938#8939#0" expanded="false" />
+                <element signature="e#8965#8966#0" expanded="false" />
+                <element signature="e#11209#11210#0" expanded="false" />
+                <element signature="e#11247#11248#0" expanded="false" />
+                <element signature="e#15878#15879#0" expanded="false" />
+                <element signature="e#15927#15928#0" expanded="false" />
+                <element signature="e#16099#16100#0" expanded="false" />
+                <element signature="e#16149#16150#0" expanded="false" />
+                <element signature="e#16416#16417#0" expanded="false" />
+                <element signature="e#16470#16471#0" expanded="false" />
+                <element signature="e#19921#19922#0" expanded="false" />
+                <element signature="e#19954#19955#0" expanded="false" />
+                <element signature="e#20484#20485#0" expanded="false" />
+                <element signature="e#20520#20521#0" expanded="false" />
+                <element signature="e#20770#20771#0" expanded="false" />
+                <element signature="e#20799#20800#0" expanded="false" />
+                <element signature="e#23214#23215#0" expanded="false" />
+                <element signature="e#23241#23242#0" expanded="false" />
+                <element signature="e#23699#23700#0" expanded="false" />
+                <element signature="e#23735#23736#0" expanded="false" />
+                <element signature="e#24161#24162#0" expanded="false" />
+                <element signature="e#24193#24194#0" expanded="false" />
+                <element signature="e#26756#26757#0" expanded="false" />
+                <element signature="e#26803#26804#0" expanded="false" />
+                <element signature="e#27125#27126#0" expanded="false" />
+                <element signature="e#27169#27170#0" expanded="false" />
+                <element signature="e#27499#27500#0" expanded="false" />
+                <element signature="e#27539#27540#0" expanded="false" />
+                <element signature="e#27577#27578#0" expanded="false" />
+                <element signature="e#27621#27622#0" expanded="false" />
+                <element signature="e#29442#29443#0" expanded="false" />
+                <element signature="e#29489#29490#0" expanded="false" />
+                <element signature="e#29728#29729#0" expanded="false" />
+                <element signature="e#29776#29777#0" expanded="false" />
+                <element signature="e#29802#29803#0" expanded="false" />
+                <element signature="e#29847#29848#0" expanded="false" />
+                <element signature="e#29878#29879#0" expanded="false" />
+                <element signature="e#29914#29915#0" expanded="false" />
+                <element signature="e#36042#36043#0" expanded="false" />
+                <element signature="e#36098#36099#0" expanded="false" />
+                <element signature="e#39243#39244#0" expanded="false" />
+                <element signature="e#39336#39337#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,20 +147,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ResourceManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/state/ResourceManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1170">
-              <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="TileGameResourceManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/TileGameResourceManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="989">
+            <state relative-caret-position="7488">
               <caret line="301" column="31" selection-start-line="301" selection-start-column="31" selection-end-line="301" selection-end-column="31" />
               <folding>
                 <element signature="e#5262#5263#0" expanded="true" />
@@ -213,9 +249,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -281,24 +317,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="maps" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ch18src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ch18src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -896,11 +914,14 @@
       <workItem from="1477440172552" duration="1419000" />
       <workItem from="1477441616489" duration="6355000" />
       <workItem from="1477508349245" duration="10998000" />
+      <workItem from="1477540529957" duration="5296000" />
+      <workItem from="1477674181559" duration="170000" />
+      <workItem from="1477674364113" duration="2134000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18772000" />
+    <option name="totallyTimeSpent" value="26372000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="22" width="1216" height="1906" extended-state="6" />
@@ -918,19 +939,19 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.215" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2825" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.3997773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-18" y="1177" width="1200" height="576" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.3997773" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="-1821" y="307" width="1200" height="576" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -949,41 +970,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/MainGameState.java</url>
-          <line>166</line>
+          <line>188</line>
           <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/MainGameState.java</url>
-          <line>158</line>
-          <properties />
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="11" />
+      <option name="time" value="17" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="coolDown" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/GameManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1560">
-          <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2384#2675#0" expanded="true" />
-            <element signature="e#2674#2675#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/TileMapRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3770">
@@ -1006,7 +1013,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2288">
           <caret line="93" column="16" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#3221#3222#0" expanded="true" />
+            <element signature="e#3266#3267#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1022,7 +1032,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1030,9 +1039,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#10167#10175#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1040,7 +1047,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1638">
           <caret line="72" column="19" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
-          <folding />
+          <folding>
+            <element signature="e#5262#5263#0" expanded="true" />
+            <element signature="e#5297#5298#0" expanded="true" />
+            <element signature="e#5334#5335#0" expanded="true" />
+            <element signature="e#5374#5375#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1059,10 +1071,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="494">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#476#477#0" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1072,8 +1081,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2384#2675#0" expanded="true" />
-            <element signature="e#2674#2675#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1082,7 +1089,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1014">
           <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1090,10 +1096,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5824">
           <caret line="236" column="0" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
-          <folding>
-            <element signature="e#5416#5417#0" expanded="true" />
-            <element signature="e#5475#5476#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1101,7 +1103,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="9360">
           <caret line="360" column="0" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1109,7 +1110,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1300">
           <caret line="50" column="34" selection-start-line="50" selection-start-column="34" selection-end-line="50" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1124,9 +1124,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4446">
           <caret line="216" column="0" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
-          <folding>
-            <element signature="e#6758#6759#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1134,9 +1131,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4446">
           <caret line="216" column="0" selection-start-line="216" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
-          <folding>
-            <element signature="e#6758#6759#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1159,7 +1153,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8606">
           <caret line="360" column="0" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1224,7 +1217,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1270,7 +1262,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
           <caret line="172" column="16" selection-start-line="172" selection-start-column="16" selection-end-line="172" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1297,7 +1288,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
           <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1311,7 +1301,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/TileMapRenderer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3209">
+        <state relative-caret-position="3224">
           <caret line="135" column="17" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
           <folding />
         </state>
@@ -1319,9 +1309,59 @@
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/src.zip!/java/util/LinkedList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
+        <state relative-caret-position="23556">
           <caret line="965" column="0" selection-start-line="965" selection-start-column="0" selection-end-line="965" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#39347#0" expanded="false" />
+            <element signature="e#8008#8009#0" expanded="false" />
+            <element signature="e#8036#8037#0" expanded="false" />
+            <element signature="e#8248#8249#0" expanded="false" />
+            <element signature="e#8275#8276#0" expanded="false" />
+            <element signature="e#8748#8749#0" expanded="false" />
+            <element signature="e#8787#8788#0" expanded="false" />
+            <element signature="e#8938#8939#0" expanded="false" />
+            <element signature="e#8965#8966#0" expanded="false" />
+            <element signature="e#11209#11210#0" expanded="false" />
+            <element signature="e#11247#11248#0" expanded="false" />
+            <element signature="e#15878#15879#0" expanded="false" />
+            <element signature="e#15927#15928#0" expanded="false" />
+            <element signature="e#16099#16100#0" expanded="false" />
+            <element signature="e#16149#16150#0" expanded="false" />
+            <element signature="e#16416#16417#0" expanded="false" />
+            <element signature="e#16470#16471#0" expanded="false" />
+            <element signature="e#19921#19922#0" expanded="false" />
+            <element signature="e#19954#19955#0" expanded="false" />
+            <element signature="e#20484#20485#0" expanded="false" />
+            <element signature="e#20520#20521#0" expanded="false" />
+            <element signature="e#20770#20771#0" expanded="false" />
+            <element signature="e#20799#20800#0" expanded="false" />
+            <element signature="e#23214#23215#0" expanded="false" />
+            <element signature="e#23241#23242#0" expanded="false" />
+            <element signature="e#23699#23700#0" expanded="false" />
+            <element signature="e#23735#23736#0" expanded="false" />
+            <element signature="e#24161#24162#0" expanded="false" />
+            <element signature="e#24193#24194#0" expanded="false" />
+            <element signature="e#26756#26757#0" expanded="false" />
+            <element signature="e#26803#26804#0" expanded="false" />
+            <element signature="e#27125#27126#0" expanded="false" />
+            <element signature="e#27169#27170#0" expanded="false" />
+            <element signature="e#27499#27500#0" expanded="false" />
+            <element signature="e#27539#27540#0" expanded="false" />
+            <element signature="e#27577#27578#0" expanded="false" />
+            <element signature="e#27621#27622#0" expanded="false" />
+            <element signature="e#29442#29443#0" expanded="false" />
+            <element signature="e#29489#29490#0" expanded="false" />
+            <element signature="e#29728#29729#0" expanded="false" />
+            <element signature="e#29776#29777#0" expanded="false" />
+            <element signature="e#29802#29803#0" expanded="false" />
+            <element signature="e#29847#29848#0" expanded="false" />
+            <element signature="e#29878#29879#0" expanded="false" />
+            <element signature="e#29914#29915#0" expanded="false" />
+            <element signature="e#36042#36043#0" expanded="false" />
+            <element signature="e#36098#36099#0" expanded="false" />
+            <element signature="e#39243#39244#0" expanded="false" />
+            <element signature="e#39336#39337#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1336,18 +1376,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/GameManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1324">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2384#2675#0" expanded="true" />
-            <element signature="e#2674#2675#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/sprites/EnemyBullet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -1358,7 +1386,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/TileGameResourceManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="989">
+        <state relative-caret-position="7488">
           <caret line="301" column="31" selection-start-line="301" selection-start-column="31" selection-end-line="301" selection-end-column="31" />
           <folding>
             <element signature="e#5262#5263#0" expanded="true" />
@@ -1369,21 +1397,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_101/jre/lib/rt.jar!/sun/misc/Unsafe.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="708">
+          <caret line="364" column="20" selection-start-line="364" selection-start-column="20" selection-end-line="364" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/state/GameStateManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1119">
-          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+        <state relative-caret-position="2132">
+          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/GameManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1222">
+          <caret line="61" column="38" selection-start-line="61" selection-start-column="38" selection-end-line="61" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/brackeen/javagamebook/tilegame/MainGameState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4949">
-          <caret line="336" column="0" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
-          <folding>
-            <element signature="e#10167#10175#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1267">
+          <caret line="222" column="34" selection-start-line="222" selection-start-column="34" selection-end-line="222" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
