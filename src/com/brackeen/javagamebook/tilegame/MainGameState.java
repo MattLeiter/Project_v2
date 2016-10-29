@@ -3,11 +3,8 @@ package com.brackeen.javagamebook.tilegame;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.ListIterator;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
-import javax.sound.midi.SysexMessage;
 
 
 import com.brackeen.javagamebook.graphics.*;
@@ -157,35 +154,6 @@ public class MainGameState implements GameState {
                 player.jump(false);
             }
 
-            // add in shoot
-//            if(shoot.isPressed()) {
-//                if (System.currentTimeMillis() - bulletStart >= 200 || coolDown) {
-//                    if (coolDown) {
-//                        if (System.currentTimeMillis() - coolDownStart >= 10000) {
-//                            coolDown = false;
-//                            isShooting = false;
-//                        }
-//                    }
-//                    if (isShooting && !coolDown) { // Automatic Mode
-//                        if (shootingCount >= 10) {
-//                            shootingCount = 0;
-//                            isShooting = false;
-//                            coolDown = true;
-//                            coolDownStart = System.currentTimeMillis();
-//                        } else {
-//                            shootingCount++;
-//                            bulletStart = System.currentTimeMillis();
-//                            isShooting = true;
-//                        }
-//                    } else if (!isShooting && !coolDown) { // Normal Mode
-//                        isShooting = true;
-//                    }
-//                } else {
-//                    isShooting = false;
-//                    shootingCount = 0;
-//                }
-//            }
-            // add in shoot
             if(shoot.isPressed()) {
                 // delay
                 if (System.currentTimeMillis() - previousShot <= 200) {
@@ -328,7 +296,7 @@ public class MainGameState implements GameState {
     public void update(long elapsedTime) {
         Creature player = (Creature)map.getPlayer();
         Sprite playerBullet = (Sprite) resourceManager.getBullet().clone();
-        Sprite enemyBullet = (Sprite) resourceManager.getBullet().clone();
+        Sprite enemyBullets;
 
         // player is dead! start map over
         if (player.getState() == Creature.STATE_DEAD) {
@@ -361,7 +329,6 @@ public class MainGameState implements GameState {
             //soundManager.play(shootingSound);
         }
         // update other sprites
-        LinkedList<Sprite> enemyBullets = new LinkedList<Sprite>();
         Iterator i = map.getSprites();
         while (i.hasNext()) {
             Sprite sprite = (Sprite)i.next();
@@ -371,13 +338,18 @@ public class MainGameState implements GameState {
                     i.remove();
                 }
                 else {
-                    updateCreature(creature, elapsedTime);
+                    enemyBullets = updateCreature(creature, elapsedTime);
+                    if(enemyBullets != null)
+                    {
+                        map.addEnemyBullet(enemyBullets);
+                    }
                 }
             }
 
             // normal update
             sprite.update(elapsedTime);
         }
+        map.transfer_buffer();
     }
 
 
@@ -385,7 +357,7 @@ public class MainGameState implements GameState {
         Updates the creature, applying gravity for creatures that
         aren't flying, and checks collisions.
     */
-    private void updateCreature(Creature creature,
+    private EnemyBullet updateCreature(Creature creature,
         long elapsedTime)
     {
 
@@ -416,6 +388,10 @@ public class MainGameState implements GameState {
                     TileMapRenderer.tilesToPixels(tile.x + 1));
             }
             creature.collideHorizontal();
+
+            if (creature instanceof Bullet || creature instanceof EnemyBullet) {
+                map.removeSprite(creature);
+            }
         }
         if (creature instanceof Player) {
             checkPlayerCollision((Player)creature, false);
@@ -446,15 +422,16 @@ public class MainGameState implements GameState {
             boolean canKill = (oldY < creature.getY());
             checkPlayerCollision((Player)creature, canKill);
 
+            boolean movement = false;
             if((newX != oldX || newY!= oldY))
             {
-                HEALTH++;
+                movement = true;
             }
             else if((newX == oldX || newY == oldY))
             {
-                HEALTH +=5;
+                movement = true;
             }
-
+            if(movement) HEALTH += 1;
             if(HEALTH > 40) HEALTH = 40;
         }
 
@@ -466,6 +443,35 @@ public class MainGameState implements GameState {
                 creature.setState(Creature.STATE_DYING);
             }
         }
+
+        if(creature instanceof Grub){
+            if(creature.getVelocityX() != 0f){
+                if((creature.BULLETCOUNT > 0 &&
+                        System.currentTimeMillis() - creature.LASTBUGSHOT > 800) ||
+                        (creature.BULLETCOUNT == 0 &&
+                                ((map.getPlayer().getVelocityX()==0 && System.currentTimeMillis() - creature.LASTBUGSHOT > 2000) ||
+                                        (map.getPlayer().getVelocityX()!=0 && System.currentTimeMillis() - creature.LASTBUGSHOT > 500)))){
+                    EnemyBullet bullet =
+                            (EnemyBullet) resourceManager.getEnemyBullet().clone();
+                    if(creature.direction != "left"){
+                        bullet.setX(creature.getX() + 70);
+                        bullet.setY(creature.getY() - 20);
+                        bullet.setVelocityX(0.7f);
+                    }else{
+                        bullet.setX(creature.getX() - 70);
+                        bullet.setY(creature.getY() - 20);
+                        bullet.setVelocityX(-0.7f);
+                    }
+                    creature.LASTBUGSHOT = System.currentTimeMillis();
+                    creature.BULLETCOUNT++;
+                    return bullet;
+                }
+            }else{
+                creature.LASTBUGSHOT = System.currentTimeMillis();
+            }
+        }
+
+        return null;
     }
 
 
@@ -487,10 +493,25 @@ public class MainGameState implements GameState {
             acquirePowerUp((PowerUp)collisionSprite);
         }
         else if (collisionSprite instanceof Creature) {
-            if(collisionSprite instanceof Bullet)
-            {
+            if(collisionSprite instanceof Bullet) {
                 return;
             }
+
+            if(collisionSprite instanceof EnemyBullet)
+            {
+                if(HEALTH <= 5)
+                {
+                    HEALTH = 0;
+                    player.setState(Creature.STATE_DYING);
+                }
+                else
+                {
+                    HEALTH -= 5;
+                    map.removeSprite(collisionSprite);
+                }
+                return;
+            }
+
             HEALTH = 0;
             player.setState(Creature.STATE_DYING);
         }

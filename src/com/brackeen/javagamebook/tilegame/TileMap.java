@@ -17,6 +17,7 @@ public class TileMap {
     private Image[][] tiles;
     private LinkedList sprites;
     private Sprite player;
+    private LinkedList buffer_list;
 
     /**
         Creates a new TileMap with the specified width and
@@ -25,6 +26,7 @@ public class TileMap {
     public TileMap(int width, int height) {
         tiles = new Image[width][height];
         sprites = new LinkedList();
+        buffer_list = new LinkedList();
     }
 
 
@@ -92,6 +94,16 @@ public class TileMap {
         sprites.add(sprite);
     }
 
+    public void addEnemyBullet(Sprite sprite){
+        buffer_list.add(sprite);
+    }
+
+    public void transfer_buffer(){
+        for(int i = 0; i < buffer_list.size(); i++){
+            sprites.add(buffer_list.get(i));
+        }
+        buffer_list.clear();
+    }
 
     /**
         Removes a Sprite object from this map.

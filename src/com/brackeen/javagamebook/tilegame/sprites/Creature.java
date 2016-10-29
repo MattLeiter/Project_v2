@@ -27,6 +27,9 @@ public abstract class Creature extends Sprite {
     private long stateTime;
     public boolean isEnemyShooting = false;
 
+    public long LASTBUGSHOT = System.currentTimeMillis();
+    public int BULLETCOUNT = 0;
+
     public String direction = "right"; // Initial player direction right
     /**
         Creates a new Creature with the specified Animations.
