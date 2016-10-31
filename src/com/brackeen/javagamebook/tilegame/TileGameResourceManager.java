@@ -225,8 +225,8 @@ public class TileGameResourceManager extends ResourceManager {
             loadImage("fly1.png"),
             loadImage("fly2.png"),
             loadImage("fly3.png"),
-            loadImage("grub1.png"),
-            loadImage("grub2.png"),
+            loadImage("hillary.png"),
+            loadImage("hillary.png"),
         };
 
         images[1] = new Image[images[0].length];
@@ -325,7 +325,7 @@ public class TileGameResourceManager extends ResourceManager {
 
         // create bullet
         anim = new Animation();
-        Image bullImage = loadImage("heart1.png");
+        Image bullImage = loadImage("email.png");
         anim.addFrame(bullImage, 150);
         bulletSprite = new Bullet(anim, anim, anim, anim);
 

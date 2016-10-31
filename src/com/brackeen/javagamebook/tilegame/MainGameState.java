@@ -18,8 +18,8 @@ public class MainGameState implements GameState {
     private static final int DRUM_TRACK = 1;
 
     public static final float GRAVITY = 0.002f;
-    public static int HEALTH = 20;
-
+    public static float HEALTH = 20;
+    public static int SCORE = 0;
 
     private SoundManager soundManager;
     private MidiPlayer midiPlayer;
@@ -79,7 +79,7 @@ public class MainGameState implements GameState {
         resourceManager.loadResources();
 
         renderer.setBackground(
-            resourceManager.loadImage("background.jpg"));
+            resourceManager.loadImage("whitehouse.jpg"));
 
         // load first map
         map = resourceManager.loadNextMap();
@@ -335,6 +335,12 @@ public class MainGameState implements GameState {
             if (sprite instanceof Creature) {
                 Creature creature = (Creature)sprite;
                 if (creature.getState() == Creature.STATE_DEAD) {
+                    if(creature instanceof Grub || creature instanceof Fly)
+                    {
+                        MainGameState.SCORE += 1;
+                        MainGameState.HEALTH += 5;
+
+                    }
                     i.remove();
                 }
                 else {
@@ -352,7 +358,8 @@ public class MainGameState implements GameState {
         map.transfer_buffer();
     }
 
-
+private long prevMotionLessTime = 0;
+private boolean prevMotionLess = false;
     /**
         Updates the creature, applying gravity for creatures that
         aren't flying, and checks collisions.
@@ -390,7 +397,12 @@ public class MainGameState implements GameState {
             creature.collideHorizontal();
 
             if (creature instanceof Bullet || creature instanceof EnemyBullet) {
-                map.removeSprite(creature);
+                try{
+//                    map.removeSprite(creature);
+                }
+                catch(Exception e){
+                    System.out.println("Caught error");
+                }
             }
         }
         if (creature instanceof Player) {
@@ -421,17 +433,19 @@ public class MainGameState implements GameState {
         if (creature instanceof Player) {
             boolean canKill = (oldY < creature.getY());
             checkPlayerCollision((Player)creature, canKill);
-
             boolean movement = false;
-            if((newX != oldX || newY!= oldY))
+            prevMotionLess = false;
+
+//            if((newX != oldX || newY!= oldY))
+            if(newX != oldX)
             {
-                movement = true;
+                HEALTH += 0.05;
             }
-            else if((newX == oldX || newY == oldY))
+            else if(newX == oldX) // || newY == oldY))
             {
-                movement = true;
+                HEALTH += 1;
             }
-            if(movement) HEALTH += 1;
+
             if(HEALTH > 40) HEALTH = 40;
         }
 
@@ -441,6 +455,7 @@ public class MainGameState implements GameState {
             if(creature.isAlive() && !(creature instanceof Player) & !(creature instanceof Bullet))
             {
                 creature.setState(Creature.STATE_DYING);
+
             }
         }
 
@@ -502,6 +517,7 @@ public class MainGameState implements GameState {
                 if(HEALTH <= 5)
                 {
                     HEALTH = 0;
+                    SCORE = 0;
                     player.setState(Creature.STATE_DYING);
                 }
                 else
@@ -513,6 +529,7 @@ public class MainGameState implements GameState {
             }
 
             HEALTH = 0;
+            SCORE = 0;
             player.setState(Creature.STATE_DYING);
         }
     }
