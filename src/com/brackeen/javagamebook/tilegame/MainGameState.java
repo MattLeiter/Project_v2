@@ -20,6 +20,9 @@ public class MainGameState implements GameState {
     public static final float GRAVITY = 0.002f;
     public static float HEALTH = 20;
     public static int SCORE = 0;
+    public static boolean star_flag = false;
+    public static long star_time = 0;
+    public static long star_count = 0;
 
     private SoundManager soundManager;
     private MidiPlayer midiPlayer;
@@ -31,6 +34,7 @@ public class MainGameState implements GameState {
     private Sound prizeSound;
     private Sound boopSound;
     private Sequence music;
+    private Sequence prize;
     private TileMap map;
     private TileMapRenderer renderer;
 
@@ -88,6 +92,7 @@ public class MainGameState implements GameState {
         prizeSound = resourceManager.loadSound("sounds/prize.wav");
         boopSound = resourceManager.loadSound("sounds/boop2.wav");
         music = resourceManager.loadSequence("sounds/music.midi");
+        prize = resourceManager.loadSequence("sounds/prize.mid");
     }
 
     public void start(InputManager inputManager) {
@@ -100,7 +105,7 @@ public class MainGameState implements GameState {
 
         soundManager.setPaused(false);
         midiPlayer.setPaused(false);
-        midiPlayer.play(music, true);
+//        midiPlayer.play(music, true);
         toggleDrumPlayback();
     }
 
@@ -367,6 +372,14 @@ private boolean prevMotionLess = false;
     private EnemyBullet updateCreature(Creature creature,
         long elapsedTime)
     {
+        if(star_flag  &&  System.currentTimeMillis() - star_time > 3000){
+            star_flag = false;
+            star_count = 0;
+        }
+        else if(star_flag && star_count > 10){
+            star_flag = false;
+            star_count = 0;
+        }
 
         // apply gravity
         if (!creature.isFlying()) {
@@ -434,18 +447,28 @@ private boolean prevMotionLess = false;
             boolean canKill = (oldY < creature.getY());
             checkPlayerCollision((Player)creature, canKill);
             boolean movement = false;
-            prevMotionLess = false;
 
-//            if((newX != oldX || newY!= oldY))
             if(newX != oldX)
             {
+                star_count++;
+                prevMotionLess = false;
                 HEALTH += 0.05;
             }
             else if(newX == oldX) // || newY == oldY))
             {
-                HEALTH += 1;
+                if (prevMotionLess) {
+                    if (System.currentTimeMillis() - prevMotionLessTime >= 1000) {
+                        HEALTH += 1;
+                        prevMotionLessTime = System.currentTimeMillis();
+                    } else if (System.currentTimeMillis() - prevMotionLessTime < 1000) {
+                        // do nothing
+                    }
+                }
+                else{
+                    prevMotionLess = true;
+                    prevMotionLessTime  = System.currentTimeMillis();
+                }
             }
-
             if(HEALTH > 40) HEALTH = 40;
         }
 
@@ -507,13 +530,14 @@ private boolean prevMotionLess = false;
         if (collisionSprite instanceof PowerUp) {
             acquirePowerUp((PowerUp)collisionSprite);
         }
-        else if (collisionSprite instanceof Creature) {
+        else if (collisionSprite instanceof Creature && !star_flag) {
             if(collisionSprite instanceof Bullet) {
                 return;
             }
 
             if(collisionSprite instanceof EnemyBullet)
             {
+
                 if(HEALTH <= 5)
                 {
                     HEALTH = 0;
@@ -546,6 +570,9 @@ private boolean prevMotionLess = false;
         if (powerUp instanceof PowerUp.Star) {
             // do something here, like give the player points
             soundManager.play(prizeSound);
+            star_flag = true;
+            star_time = System.currentTimeMillis();
+            star_count = 0;
         }
         else if (powerUp instanceof PowerUp.Music) {
             // change the music
@@ -554,10 +581,15 @@ private boolean prevMotionLess = false;
         }
         else if (powerUp instanceof PowerUp.Goal) {
             // advance to next map
-            soundManager.play(prizeSound,
-                new EchoFilter(2000, .7f), false);
-            map = resourceManager.loadNextMap();
+//            soundManager.play(prizeSound);
+            midiPlayer.play(prize, true);
+//            soundManager.play(prizeSound, new EchoFilter(2000, .7f), false);
+//            map = resourceManager.loadNextMap();
+            HEALTH += 5;
         }
+
+        map.removeSprite(powerUp);
+
     }
 
 }

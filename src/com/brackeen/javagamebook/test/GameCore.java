@@ -23,7 +23,7 @@ public abstract class GameCore {
 //        new DisplayMode(1024, 768, 16, 0),
 //        new DisplayMode(1024, 768, 32, 0),
 //        new DisplayMode(1024, 768, 24, 0),
-            new DisplayMode(1920, 1200, 32, 0)
+            new DisplayMode(1920, 1280, 32, 0)
     };
 
     private boolean isRunning;
