@@ -458,7 +458,12 @@ private boolean prevMotionLess = false;
 
             if (creature instanceof Bullet || creature instanceof EnemyBullet) {
                 try{
-//                    map.removeSprite(creature);
+
+                    creature.setY(1000);
+                    creature.setX(1000);
+                    creature.setVelocityX(0);
+                    creature.setVelocityY(0);
+
                 }
                 catch(Exception e){
                     System.out.println("Caught error");
