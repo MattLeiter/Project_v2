@@ -57,4 +57,23 @@ public abstract class PowerUp extends Sprite {
         }
     }
 
+    /**
+     Gas tile     */
+    public static class Gas extends PowerUp {
+        public Gas(Animation anim) {
+            super(anim);
+        }
+    }
+
+
+    /**
+     Explode tile     */
+    public static class Explode extends PowerUp {
+        public boolean EXPLOSIVE = true;
+        public Explode(Animation anim) {
+            super(anim);
+        }
+
+    }
+
 }

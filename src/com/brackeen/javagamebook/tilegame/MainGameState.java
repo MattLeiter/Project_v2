@@ -24,6 +24,11 @@ public class MainGameState implements GameState {
     public static long star_time = 0;
     public static long star_count = 0;
 
+    public static boolean gas_flag = false;
+    public static long gas_time = 0;
+    public static long gas_count = 0;
+
+
     private SoundManager soundManager;
     private MidiPlayer midiPlayer;
     private TileGameResourceManager resourceManager;
@@ -42,6 +47,8 @@ public class MainGameState implements GameState {
 
     private GameAction moveLeft;
     private GameAction moveRight;
+    private GameAction moveUp;
+    private GameAction moveDown;
     private GameAction jump;
     private GameAction exit;
 
@@ -57,6 +64,8 @@ public class MainGameState implements GameState {
         this.height = height;
         moveLeft = new GameAction("moveLeft");
         moveRight = new GameAction("moveRight");
+        moveUp = new GameAction("moveUp");
+        moveDown = new GameAction("moveDown");
         shoot = new GameAction("shoot"); // ****** new
         jump = new GameAction("jump",
             GameAction.DETECT_INITAL_PRESS_ONLY);
@@ -98,8 +107,9 @@ public class MainGameState implements GameState {
     public void start(InputManager inputManager) {
         inputManager.mapToKey(moveLeft, KeyEvent.VK_LEFT);
         inputManager.mapToKey(moveRight, KeyEvent.VK_RIGHT);
+        inputManager.mapToKey(moveUp, KeyEvent.VK_UP);
+        inputManager.mapToKey(moveDown, KeyEvent.VK_DOWN);
         inputManager.mapToKey(jump, KeyEvent.VK_SPACE);
-        inputManager.mapToKey(jump, KeyEvent.VK_UP);
         inputManager.mapToKey(exit, KeyEvent.VK_ESCAPE);
         inputManager.mapToKey(shoot, KeyEvent.VK_S);
 
@@ -149,33 +159,68 @@ public class MainGameState implements GameState {
         Player player = (Player)map.getPlayer();
         if (player.isAlive()) {
             float velocityX = 0;
+            float velocityY = 0;
+
             if (moveLeft.isPressed()) {
                 velocityX-=player.getMaxSpeed();
             }
             if (moveRight.isPressed()) {
                 velocityX+=player.getMaxSpeed();
             }
-            if (jump.isPressed()) {
-                player.jump(false);
+            if (moveDown.isPressed()) {
+                velocityY+=player.getMaxSpeed();
+            }
+            if (moveUp.isPressed()) {
+                velocityY-=player.getMaxSpeed();
             }
 
+            if(moveUp.isPressed() && moveRight.isPressed())
+            {
+                player.jump(true);
+            }
+//            if (jump.isPressed()) {
+//                player.jump(false);
+//            }
+
             if(shoot.isPressed()) {
-                // delay
-                if (System.currentTimeMillis() - previousShot <= 200) {
-                    wasShooting = isShooting;
-                    isShooting = false;
-                }
-                // not delaying
-                else {
-                    // if cooldown
-                    if (coolDown) {
-                        if (System.currentTimeMillis() - coolDownStart >= 1000) {
-                            coolDown = false;
-                            shootingCount = 0;
-                        }
+                boolean canShoot = false;
+
+                if(gas_flag)
+                {
+                    if (System.currentTimeMillis() - gas_time <= 1000 && gas_count <= 10) {
+                        canShoot = false;
                     }
-                    // not cooldown
+                    else
+                    {
+                        canShoot = true;
+                        gas_flag = false;
+                        gas_count = 0;
+                    }
+                }
+                else
+                {
+                    canShoot = true;
+                }
+
+
+
+                if (canShoot) {
+                    // delay
+                    if (System.currentTimeMillis() - previousShot <= 200) {
+                        wasShooting = isShooting;
+                        isShooting = false;
+                    }
+                    // not delaying
                     else {
+                        // if cooldown
+                        if (coolDown) {
+                            if (System.currentTimeMillis() - coolDownStart >= 1000) {
+                                coolDown = false;
+                                shootingCount = 0;
+                            }
+                        }
+                        // not cooldown
+                        else {
                             // shooting count at 10
                             if (shootingCount >= 10) {
                                 coolDown = true;
@@ -190,12 +235,14 @@ public class MainGameState implements GameState {
                             }
                         }
                     }
+                } else {
+                    isShooting = false;
+                    shootingCount = 0;
                 }
-            else{
-                isShooting = false;
-                shootingCount = 0;
             }
             player.setVelocityX(velocityX);
+            player.setVelocityY(velocityY);
+
         }
 
     }
@@ -451,6 +498,7 @@ private boolean prevMotionLess = false;
             if(newX != oldX)
             {
                 star_count++;
+                gas_count++;
                 prevMotionLess = false;
                 HEALTH += 0.05;
             }
@@ -528,7 +576,12 @@ private boolean prevMotionLess = false;
         // check for player collision with other sprites
         Sprite collisionSprite = getSpriteCollision(player);
         if (collisionSprite instanceof PowerUp) {
-            acquirePowerUp((PowerUp)collisionSprite);
+            if(acquirePowerUp((PowerUp)collisionSprite))
+            {
+                if (player.getVelocityY() > 0) {
+                    player.setVelocityY((float)-0.005);
+                }
+            }
         }
         else if (collisionSprite instanceof Creature && !star_flag) {
             if(collisionSprite instanceof Bullet) {
@@ -556,6 +609,7 @@ private boolean prevMotionLess = false;
             SCORE = 0;
             player.setState(Creature.STATE_DYING);
         }
+
     }
 
 
@@ -563,9 +617,9 @@ private boolean prevMotionLess = false;
         Gives the player the speicifed power up and removes it
         from the map.
     */
-    public void acquirePowerUp(PowerUp powerUp) {
+    public boolean acquirePowerUp(PowerUp powerUp) {
         // remove it from the map
-        map.removeSprite(powerUp);
+        //map.removeSprite(powerUp);
 
         if (powerUp instanceof PowerUp.Star) {
             // do something here, like give the player points
@@ -587,9 +641,24 @@ private boolean prevMotionLess = false;
 //            map = resourceManager.loadNextMap();
             HEALTH += 5;
         }
+        else if(powerUp instanceof PowerUp.Gas) {
+                gas_time = System.currentTimeMillis();
+            gas_flag = true;
+            gas_count = 0;
+             return true;
+        }
+        else if(powerUp instanceof PowerUp.Explode) {
+            if(((PowerUp.Explode) powerUp).EXPLOSIVE == true)
+            {
+                HEALTH -= 10;
+                ((PowerUp.Explode) powerUp).EXPLOSIVE = false;
+            }
+            return true;
+        }
+
 
         map.removeSprite(powerUp);
-
+        return false;
     }
 
 }

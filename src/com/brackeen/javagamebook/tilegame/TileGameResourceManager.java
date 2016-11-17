@@ -27,6 +27,8 @@ public class TileGameResourceManager extends ResourceManager {
     private Sprite musicSprite;
     private Sprite coinSprite;
     private Sprite goalSprite;
+    private Sprite gasSprite;
+    private Sprite explodeSprite;
     private Sprite grubSprite;
     private Sprite flySprite;
     private Sprite bulletSprite;
@@ -52,22 +54,37 @@ public class TileGameResourceManager extends ResourceManager {
 
     public TileMap loadNextMap() {
         TileMap map = null;
-        while (map == null) {
-            currentMap++;
+        if(!GameManager.mapflag) {
+            System.out.println("1");
+            while (map == null) {
+                currentMap++;
+                try {
+                    map = loadMap(
+                            "maps/map" + currentMap + ".txt");
+                } catch (IOException ex) {
+                    if (currentMap == 1) {
+                        // no maps to load!
+                        return null;
+                    }
+                    currentMap = 0;
+                    map = null;
+                }
+            }
+        }
+        else {
+            System.out.println(GameManager.mapname);
             try {
                 map = loadMap(
-                    "maps/map" + currentMap + ".txt");
-            }
-            catch (IOException ex) {
+                        "maps/" + GameManager.mapname + ".txt");
+                return map;
+            } catch (IOException ex) {
                 if (currentMap == 1) {
                     // no maps to load!
                     return null;
                 }
-                currentMap = 0;
                 map = null;
             }
         }
-
         return map;
     }
 
@@ -144,6 +161,12 @@ public class TileGameResourceManager extends ResourceManager {
                 }
                 else if (ch == '2') {
                     addSprite(newMap, flySprite, x, y);
+                }
+                else if (ch == 'X') {
+                    addSprite(newMap, explodeSprite, x, y);
+                }
+                else if (ch == 'Y') {
+                    addSprite(newMap, gasSprite, x, y);
                 }
             }
         }
@@ -314,6 +337,16 @@ public class TileGameResourceManager extends ResourceManager {
         anim.addFrame(loadImage("star3.png"), 100);
         anim.addFrame(loadImage("star4.png"), 100);
         coinSprite = new PowerUp.Star(anim);
+
+        // create "Gas" sprite
+        anim = new Animation();
+        anim.addFrame(loadImage("Tile_I.png"), 150);
+        gasSprite = new PowerUp.Gas(anim);
+
+        // create "Explode" sprite
+        anim = new Animation();
+        anim.addFrame(loadImage("Tile_I.png"), 100);
+        explodeSprite = new PowerUp.Explode(anim);
 
         // create "music" sprite
         anim = new Animation();

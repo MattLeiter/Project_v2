@@ -9,7 +9,7 @@ public class Player extends Creature {
 
     private static final float JUMP_SPEED = -.95f;
 
-    private boolean onGround;
+    public boolean onGround;
 
     // Initialize health
     public Player(Animation left, Animation right,
@@ -51,7 +51,9 @@ public class Player extends Creature {
     public void jump(boolean forceJump) {
         if (onGround || forceJump) {
             onGround = false;
-            setVelocityY(JUMP_SPEED);
+            setVelocityY(JUMP_SPEED*2);
+            setVelocityX(JUMP_SPEED*2);
+
         }
     }
 

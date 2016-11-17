@@ -3,6 +3,7 @@ package com.brackeen.javagamebook.tilegame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.function.Supplier;
 import java.util.logging.*;
 import javax.swing.*;
 import javax.sound.sampled.AudioFormat;
@@ -18,10 +19,21 @@ import com.brackeen.javagamebook.util.TimeSmoothie;
     GameManager manages all parts of the game.
 */
 public class GameManager extends GameCore {
-
+    static String mapname;
+    static boolean mapflag = false;
     static final Logger log = Logger.getLogger("com.brackeen.javagamebook.tilegame");
 
     public static void main(String[] args) {
+        try{
+            mapname = args[0];
+            mapflag = true;
+        }
+        catch(Exception e){
+            mapname = "default.txt";
+            mapflag= false;
+        }
+
+        System.out.println(mapname);
         new GameManager().run();
     }
 
