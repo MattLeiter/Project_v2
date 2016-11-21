@@ -34,10 +34,10 @@ public class TileGameResourceManager extends ResourceManager {
     private Sprite bulletSprite;
     private Sprite enemyBulletSprite;
 
-    /**
-        Creates a new ResourceManager with the specified
-        GraphicsConfiguration.
-    */
+    
+    //    Creates a new ResourceManager with the specified
+    //    GraphicsConfiguration.
+    
     public TileGameResourceManager(GraphicsConfiguration gc,
         SoundManager soundManager, MidiPlayer midiPlayer)
     {
@@ -75,7 +75,7 @@ public class TileGameResourceManager extends ResourceManager {
             System.out.println(GameManager.mapname);
             try {
                 map = loadMap(
-                        "maps/" + GameManager.mapname + ".txt");
+                        "maps/map" + GameManager.mapname + ".txt");
                 return map;
             } catch (IOException ex) {
                 if (currentMap == 1) {
