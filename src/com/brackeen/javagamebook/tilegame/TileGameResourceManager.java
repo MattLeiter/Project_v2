@@ -91,8 +91,9 @@ public class TileGameResourceManager extends ResourceManager {
 
     public TileMap reloadMap() {
         try {
+            System.out.println("here" + currentMap);
             return loadMap(
-                "maps/map" + currentMap + ".txt");
+                "maps/map" + GameManager.mapname + ".txt");
         }
         catch (IOException ex) {
             ex.printStackTrace();
